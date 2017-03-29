@@ -4,6 +4,9 @@ Q=imread('coba.jpg');
  redPlane = Q(:, :, 1);
  greenPlane = Q(:, :, 2);
  bluePlane = Q(:, :, 3);
+ 
+%colorhistogram
+colorhis=colorhistogram(redPlane, greenPlane, bluePlane);
 
 redPlane=padarray(redPlane,[2 2]); %dikasih padding 2 dengan nilai 0
 greenPlane=padarray(greenPlane,[2 2]); %dikasih padding 2 dengan nilai 0
