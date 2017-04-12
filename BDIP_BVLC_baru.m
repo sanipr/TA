@@ -1,5 +1,14 @@
-addpath('/Users/sani/Kuliah/Sem8/TA/dataset')
-Q=imread('coba.jpg');
+function st=BDIP_BVLC_baru(Q)
+
+%struct yang berisi color histogram, BVLC, BDIP dari red green blue
+field1='colorhis'; val1=[];
+field2='merahBDIP'; val2=[];
+field3='merahBVLC'; val3=[];
+field4='hijauBDIP'; val4=[];
+field5='hijauBVLC'; val5=[];
+field6='biruBDIP'; val6=[];
+field7='biruBVLC'; val7=[];
+st(1)=struct(field1,val1,field2,val2,field3,val3,field4,val4,field5,val5,field6,val6,field7,val7);
 
 %select each color of RGB as matrices
  redPlane = Q(:, :, 1);
@@ -9,7 +18,7 @@ Q=imread('coba.jpg');
  [r c]=size(redPlane); %r=row c=column
  
 %colorhistogram
-colorhis=colorhistogram(redPlane, greenPlane, bluePlane);
+st.colorhis=colorhistogram(redPlane, greenPlane, bluePlane);
 
 redPlane=padarray(redPlane,[2 2]); %dikasih padding 2 dengan nilai 0
 greenPlane=padarray(greenPlane,[2 2]); %dikasih padding 2 dengan nilai 0
@@ -22,33 +31,25 @@ for x=0:(r/2)-1
         s=x*2+3;
         t=y*2+3;
         %block yang sedang dikerjakan untuk warna merah
-        merah= double(redPlane(s:s+1, t:t+1)); %(x,y)
+%         merah= double(redPlane(s:s+1, t:t+1)); %(x,y)
         %menghitung BVLC dan BDIP untuk warna merah
-        merahBVLC(x+1,y+1)=hitungBVLC(redPlane,merah,s,t); %simpan hasil BVLC dengan koordinat dikurangi 2 untuk menghilangkan padding
+        merahBVLC(x+1,y+1)=hitungBVLC(redPlane,s,t); %simpan hasil BVLC dengan koordinat dikurangi 2 untuk menghilangkan padding
         merahBDIP(x+1,y+1)=hitungBDIP(s,t,redPlane); %simpan hasil BDIP dengan koordinat dikurangi 2 untuk menghilangkan padding
         
         %block yang sedang dikerjakan untuk warna hijau
-        hijau= double(greenPlane(s:s+1, t:t+1)); %(x,y)
+%         hijau= double(greenPlane(s:s+1, t:t+1)); %(x,y)
         %menghitung BVLC dan BDIP untuk warna hijau
-        hijauBVLC(x+1,y+1)=hitungBVLC(greenPlane,hijau,s,t); %simpan hasil BVLC dengan koordinat dikurangi 2 untuk menghilangkan padding
+        hijauBVLC(x+1,y+1)=hitungBVLC(greenPlane,s,t); %simpan hasil BVLC dengan koordinat dikurangi 2 untuk menghilangkan padding
         hijauBDIP(x+1,y+1)=hitungBDIP(s,t,greenPlane); %simpan hasil BDIP dengan koordinat dikurangi 2 untuk menghilangkan padding
         
         %block yang sedang dikerjakan untuk warna biru
-        biru= double(bluePlane(s:s+1, t:t+1)); %(x,y)
+%         biru= double(bluePlane(s:s+1, t:t+1)); %(x,y)
         %menghitung BVLC dan BDIP untuk warna biru
-        biruBVLC(x+1,y+1)=hitungBVLC(bluePlane,biru,s,t); %simpan hasil BVLC dengan koordinat dikurangi 2 untuk menghilangkan padding
+        biruBVLC(x+1,y+1)=hitungBVLC(bluePlane,s,t); %simpan hasil BVLC dengan koordinat dikurangi 2 untuk menghilangkan padding
         biruBDIP(x+1,y+1)=hitungBDIP(s,t,bluePlane); %simpan hasil BDIP dengan koordinat dikurangi 2 untuk menghilangkan padding
         
     end
 end
-
-im_BVLC1=mat2gray(merahBVLC);
-figure,imshow(im_BVLC1);
-title('merahBVLC');
-
-im_BDIP=mat2gray(merahBDIP);
-figure,imshow(im_BDIP);
-title('merahBDIP');
 
   [ro co]=size(merahBVLC);
 
@@ -73,11 +74,11 @@ biruBVLC=sort(biruBVLC);
 biruBDIP=sort(biruBDIP);
 
 %mendapatkan nilai deviasi dan rata2 dari 8 bagian 
-merahBVLC=f_dividearray(merahBVLC);
-merahBDIP=f_dividearray(merahBDIP);
+st(1).merahBVLC=f_dividearray(merahBVLC);
+st(1).merahBDIP=f_dividearray(merahBDIP);
 
-hijauBVLC=f_dividearray(hijauBVLC);
-hijauBDIP=f_dividearray(hijauBDIP);
+st(1).hijauBVLC=f_dividearray(hijauBVLC);
+st(1).hijauBDIP=f_dividearray(hijauBDIP);
 
-biruBVLC=f_dividearray(biruBVLC);
-biruBDIP=f_dividearray(biruBDIP);
+st(1).biruBVLC=f_dividearray(biruBVLC);
+st(1).biruBDIP=f_dividearray(biruBDIP);

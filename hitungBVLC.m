@@ -1,7 +1,7 @@
-function hasil= hitungBVLC(Q,Q2,x,y)
+function hasil= hitungBVLC(Q,x,y)
 %menghitung deviasi & mean xy (blok yang sedang dikerjakan)
-        s=std2(Q2);
-        m=mean(mean(Q2));
+%         s=std2(Q2);
+%         m=mean(mean(Q2));
         %menghitung nilai pershift
         shift(1)=nilaipershift1(Q,x,y);
         shift(2)=nilaipershift2(Q,x,y);
