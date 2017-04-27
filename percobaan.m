@@ -23,7 +23,7 @@ for i =1 : length(srcFiles)
 end
 
 hasil2= sortrows(hasil);
-for i=1:10
+for i=1:5
     filename = strcat('/Users/sani/Kuliah/Sem8/TA/dataset/',srcFiles(hasil2(i,2)).name);
     I=imread(filename);
     subplot(1,5,i), imshow(I)
