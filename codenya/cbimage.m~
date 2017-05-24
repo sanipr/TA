@@ -56,11 +56,8 @@ for i=0:(length(PR2)/5)-1
     PR2(i*5+1,4)=mean(PR2(i*5+1:i*5+5,2));
 end
 
-for i=0:99
-    PR3(i+1,1)=PR2(i*5+1,1);
-    PR3(i+1,2)=PR2(i*5+1,2);
-    PR3(i+1,3)=PR2(i*5+1,3);
-    PR3(i+1,4)=PR2(i*5+1,4);
+for i=1:100
+    PR3(i,1)=PR2
 end
 
 PR3=sortrows(PR2,4);

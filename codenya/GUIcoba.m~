@@ -108,10 +108,7 @@ handles.filepath=PathName;
 handles.filename=FileName;
 path=strcat(handles.filepath,handles.filename);
 set(handles.edit1,'String',path);
-kat=strsplit(FileName,'.');
-kat=str2double(kat(1));
-kat=fix(kat/100)+1;
-kat=num2str(kat);
+kat
 % guidata(hObject,handles); % instruksi simpan object
 % button(handles.cari_button);
 im = imread([PathName,FileName]);
@@ -119,13 +116,12 @@ handles.im=im; % menyimpan nilai variabel
 guidata(hObject,handles); % instruksi simpan object
 axes(handles.query_image); % memasukkan nilai variabel pada axis
 imshow(im); % menampilkan image hasil browse
-title(FileName);
-xlabel(['kategori: ', kat]);
 if handles.flag==1
 axes(handles.uipanel1)
 for i=1:handles.hps
     subplot(4,5,i), cla(handles.uipanel1);
-    
+    title(FileName);
+    xlabel();
 end
 end
 

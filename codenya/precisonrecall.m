@@ -17,7 +17,7 @@ for i=1:batas
 end
 lol.dicari=nama;
 lol.precision=jmlh/batas*100; %precision
-lol.recall=jmlh/40*100; %recall
+lol.recall=jmlh/20*100; %recall
 end
 
 % fungsi ini menghitung precision dan recall dengan input hasil2=hasil sort
