@@ -30,4 +30,4 @@ PR=precisonrecall(hasil2, 12, 40);
 
 % ini kode utama untuk nyoba suatu masukan image dan dicari image yang
 % mirip pada data training, tapi ini masukin citranya manual, makanya ada
-% mainbuatgui.m yaitu versi fungsi dari main yang khusus untuk GUI
+% mainbuatgui.m yayang khusus untuk GUI

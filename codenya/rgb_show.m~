@@ -87,11 +87,4 @@ end
 
 figure, plot(hasil)
 
-% subplot(1,2,1)
-% plot(hasil_retrieve(2:7)), title('retrieved, fitur tekstur');
-% 
-% subplot(1,2,2)
-% plot(hasil_not_retrieve(2:7)), title('not retrieved, fitur tekstur');
-
-% kode ini untuk menampilkan plot hasil jarak suatu gambar Queri terhadap 
-% gambar di kategori yang sama tapi tidak ter-retrieve
+kode ini untuk menampilkan plot hasil jarak gambar kueri

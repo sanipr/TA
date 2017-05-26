@@ -10,3 +10,6 @@ temp=temp*temp;
 hasil=hasil+temp;
 end
 end
+
+% kode ini untuk menghitung jarak pada fitur tekstur, fungsi ini digunakan
+% untuk fungsi squarechord.m

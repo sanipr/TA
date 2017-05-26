@@ -38,3 +38,6 @@ weleh=huh/500;
 
 
 
+% kode ini untuk menghitung jarak suatu data tes terhadap data training dan
+% akan menyimpan 20 citra yang paling dekat dan menghitung precision dan
+% recall

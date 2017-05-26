@@ -1,3 +1,5 @@
+% kode ini buat utak atik hasil ekstrak dan distance
+
 srcFiles= dir('/Users/sani/Kuliah/Sem8/TA/codenya/link_download/datatraining4/*.jpg');
 for i=1:length(srcFiles)
     temp=strsplit(srcFiles(i).name, '.');
@@ -19,7 +21,7 @@ for i=1:length(srcFiles)
         mirip(i,k+1)=res2(k,3);
     end
 
-    PR(i)=precisonrecall(res2, 10, nama(i));
+    PR(i)=precisonrecall(res2, 12, nama(i));
     
     
 end
@@ -30,41 +32,44 @@ for i=1:500
 end
 weleh=huh/500;
 
-
+% kode diatas buat tau rata-rata precision sama nyalin 20 nama image yg
+% paling mirip
 %==========================================================================
 
+% mendapatkan precision recall dari 20 gambar termirip
 PR4=PR;
 for i=1:250
 PR4(i)=precisonrecall(mirip(i,2:21), 20, mirip(i,1));
 end
     
-huh=0;
-for i=1:250
-    huh=PR4(i).precision+huh;
-end
-weleh=huh/250;
+% huh=0;
+% for i=1:250
+%     huh=PR4(i).precision+huh;
+% end
+% weleh=huh/250;
 
+% merubah struct precision recall ke bentuk cell
+PR2=struct2cell(PR4);
+% for i=1:length(PR4)
+%     PR2(i,1)=PR4(i).dicari;
+%     PR2(i,2)=PR4(i).precision;
+%     PR2(i,3)=PR4(i).recall;
+% end
 
-for i=1:length(PR4)
-    PR2(i,1)=PR4(i).dicari;
-    PR2(i,2)=PR4(i).precision;
-    PR2(i,3)=PR4(i).recall;
-end
-
+% menyimpan rata-rata precision setiap kategori
 PR2=sortrows(PR2);
 for i=0:(length(PR2)/5)-1
     PR2(i*5+1,4)=mean(PR2(i*5+1:i*5+5,2));
 end
 
+% menyimpan rata-rata tiap kategori dan di sort
 for i=0:99
     PR3(i+1,1)=PR2(i*5+1,1);
     PR3(i+1,2)=PR2(i*5+1,2);
     PR3(i+1,3)=PR2(i*5+1,3);
     PR3(i+1,4)=PR2(i*5+1,4);
 end
-
 PR3=sortrows(PR2,4);
-
 
 %=========================================================================
 

@@ -35,3 +35,5 @@ hasil2= sortrows(hasil);
 PR=precisonrecall(hasil2, jmlh, fn);
 result.mirip=hasil2;
 result.PR=PR;
+
+% asalnya dari kode main.m, yang ini khusus buat GUI
